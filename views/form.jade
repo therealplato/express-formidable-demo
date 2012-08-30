@@ -2,7 +2,13 @@
 head
 body
   h1 express-formidable-demo
+  h2 Form 1: default enctype
   form(action='/formpost', method='post')
+    span Foobar:
+    input(type='text')
+    input(type='submit', value='barfoo')
+  h2 Form 2: enctype='multipart/form-data'
+  form(action='/formpost', enctype='multipart/form-data', method='post')
     span Foobar:
     input(type='text')
     input(type='submit', value='barfoo')
