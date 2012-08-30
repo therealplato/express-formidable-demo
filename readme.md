@@ -10,4 +10,4 @@ cd express-formidable-demo; node app.js
 
 browse to localhost:3000 in a browser, submit form
 
-form.parse() function hangs without ever getting to callback
+form.parse() function (in app.js) hangs without ever getting to callback
