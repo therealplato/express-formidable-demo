@@ -29,19 +29,19 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/form', function(req,res){
+app.get('/', function(req,res){
   res.render('form');
 });
 
 app.post('/formpost', function(req,res){
   var form = new formidable.IncomingForm();
+  console.log('hi, form is:\n'+JSON.stringify(form));
 
 /*   PROBLEM AREA
  *
  *   */
 
-  console.log('hi, form is:\n'+JSON.stringify(form));
+  console.log('about to parse form!');
   form.parse(req, function(err, fields, files){
     console.log('In form.parse callback');
     console.log('form.type = '+form.type);
