@@ -6,6 +6,8 @@
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
+  , fs = require('fs')
+  , util = require('util')
   , path = require('path')
   , formidable = require('formidable');
 
@@ -45,11 +47,21 @@ app.post('/formpost', function(req,res){
   form.parse(req, function(err, fields, files){
     console.log('In form.parse callback');
     console.log('form.type = '+form.type);
-    console.log('fields:\n'+JSON.stringify(fields,null,2));
-    console.log('files:\n'+JSON.stringify(files,null,2));
-    res.send(200);
+    res.send(200,
+    'fields:\n'+JSON.stringify(fields,null,2)
+    +'\n\nfiles:\n'+JSON.stringify(files,null,2)
+    );
   });
 });
+
+app.post('/formpost2', function(req, res){
+  console.log('in formpost2');
+  res.send(200,
+  'fields:\n'+JSON.stringify(req.body,null,2)
+  +'\n\nfiles:\n'+JSON.stringify(req.files,null,2)
+  );
+});
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

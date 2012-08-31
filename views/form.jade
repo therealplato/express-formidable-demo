@@ -12,3 +12,9 @@ body
     span Foobar:
     input(type='text')
     input(type='submit', value='barfoo')
+  h2 Form 3: enctype='multipart/form-data' with file (only Express handles it)
+  form(action='/formpost2', enctype='multipart/form-data', method='post')
+    span Foobar:
+    input(type='text', name='avada')
+    input(type='file', name='kedavra')
+    input(type='submit', value='barfoo')
