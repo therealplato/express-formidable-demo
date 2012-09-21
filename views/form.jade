@@ -2,18 +2,9 @@
 head
 body
   h1 express-formidable-demo
-  h2 Form 1: default enctype
-  form(action='/formpost', method='post')
-    span Foobar:
-    input(type='text')
-    input(type='submit', value='barfoo')
-  h2 Form 2: enctype='multipart/form-data'
+  h2 Form 3: enctype='multipart/form-data' with file 
+  h3 Express handles the upload with req.files and req.body
   form(action='/formpost', enctype='multipart/form-data', method='post')
-    span Foobar:
-    input(type='text')
-    input(type='submit', value='barfoo')
-  h2 Form 3: enctype='multipart/form-data' with file (only Express handles it)
-  form(action='/formpost2', enctype='multipart/form-data', method='post')
     span Foobar:
     input(type='text', name='avada')
     input(type='file', name='kedavra')

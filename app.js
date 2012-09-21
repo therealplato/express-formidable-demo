@@ -2,14 +2,14 @@
 /**
  * Module dependencies.
  */
-
+process.env.TMP = './tmp';
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , fs = require('fs')
   , util = require('util')
-  , path = require('path')
-  , formidable = require('formidable');
+  , path = require('path');
+//var formidable = require('formidable');
 
 var app = express();
 
@@ -35,26 +35,7 @@ app.get('/', function(req,res){
   res.render('form');
 });
 
-app.post('/formpost', function(req,res){
-  var form = new formidable.IncomingForm();
-  console.log('hi, form is:\n'+JSON.stringify(form));
-
-/*   PROBLEM AREA
- *
- *   */
-
-  console.log('about to parse form!');
-  form.parse(req, function(err, fields, files){
-    console.log('In form.parse callback');
-    console.log('form.type = '+form.type);
-    res.send(200,
-    'fields:\n'+JSON.stringify(fields,null,2)
-    +'\n\nfiles:\n'+JSON.stringify(files,null,2)
-    );
-  });
-});
-
-app.post('/formpost2', function(req, res){
+app.post('/formpost', function(req, res){
   console.log('in formpost2');
   res.send(200,
   'fields:\n'+JSON.stringify(req.body,null,2)
